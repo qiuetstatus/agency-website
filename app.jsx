@@ -575,14 +575,14 @@ function ApplyModal({ open, onClose }) {
   if (!open) return null;
   const update = (k, v) => setData((d) => ({ ...d, [k]: v }));
   const steps = t.modal.steps;
-  const cur = steps[step];
-  const valid = cur.fields.every((f) => {
+  const isLast = step === steps.length - 1;
+  const submitted = step >= steps.length;
+  const cur = submitted ? null : steps[step];
+  const valid = cur ? cur.fields.every((f) => {
     if (f.kind === 'checkbox') return data[f.k] === true;
     const v = data[f.k];
     return v && String(v).trim().length > 0;
-  });
-  const isLast = step === steps.length - 1;
-  const submitted = step === steps.length;
+  }) : false;
 
   const handleSubmit = async () => {
     if (!valid || sending) return;
