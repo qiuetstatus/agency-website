@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Impressum — Masovic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #122620;
+      --fg: #F4EBD0;
+      --muted: #9CA89E;
+      --line: rgba(244,235,208,0.14);
+      --accent: #5E503F;
+      --deep: #0c1a16;
+      --font-display: "Cormorant Garamond", "Cormorant", serif;
+      --font-body: "Inter Tight", "Inter", system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
+    body { font-family: var(--font-body); font-size: 15px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; transition: opacity 200ms; word-break: break-word; }
+    a:hover { opacity: 0.75; }
+
+    nav.top {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 40px;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; background: color-mix(in oklab, var(--bg) 92%, transparent);
+      backdrop-filter: blur(10px); z-index: 10;
+    }
+    nav.top .brand { font-family: var(--font-display); font-size: 20px; letter-spacing: 0.04em; font-weight: 500; }
+    nav.top a.back { font-family: var(--font-body); font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--fg); text-decoration: none; opacity: 0.85; }
+    nav.top a.back:hover { opacity: 1; }
+
+    main { max-width: 720px; margin: 0 auto; padding: 100px 40px 140px; }
+
+    .eyebrow {
+      font-family: var(--font-body); font-size: 11px; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 18px;
+    }
+    h1 {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: clamp(48px, 7vw, 96px); line-height: 0.96; letter-spacing: -0.02em;
+      margin: 0 0 12px;
+    }
+    h1 .it { font-style: italic; color: var(--accent); font-weight: 400; }
+    h2 {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; letter-spacing: -0.005em;
+      margin: 56px 0 14px;
+      padding-top: 28px; border-top: 1px solid var(--line);
+    }
+    h2:first-of-type { border-top: none; padding-top: 0; margin-top: 64px; }
+    p { margin: 0 0 14px; color: color-mix(in oklab, var(--fg) 90%, transparent); text-wrap: pretty; }
+
+    .card {
+      background: var(--deep);
+      border: 1px solid var(--line);
+      padding: 28px 32px;
+      margin: 24px 0 0;
+    }
+    .card .label {
+      font-family: var(--font-body); font-size: 10px; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+    }
+    .card .name {
+      font-family: var(--font-display); font-size: 28px; line-height: 1.15;
+      letter-spacing: -0.005em; font-weight: 500; margin-bottom: 16px;
+    }
+    .card .lines { font-family: var(--font-body); font-size: 15px; line-height: 1.65; }
+    .card .lines a { font-weight: 500; }
+
+    .kv { display: grid; grid-template-columns: 140px 1fr; gap: 4px 24px; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .kv .k { font-family: var(--font-body); font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); padding-top: 6px; }
+    .kv .v { font-family: var(--font-body); font-size: 15px; line-height: 1.6; }
+
+    .note {
+      font-style: italic; color: var(--muted); font-size: 14px;
+      font-family: var(--font-display); letter-spacing: 0.005em;
+    }
+
+    footer.bottom {
+      border-top: 1px solid var(--line);
+      padding: 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+    }
+    footer.bottom a { color: var(--muted); text-decoration: none; }
+    footer.bottom a:hover { color: var(--fg); }
+
+    @media (max-width: 720px) {
+      nav.top { padding: 18px 20px; }
+      main { padding: 56px 20px 100px; }
+      h2 { margin-top: 48px; }
+      .card { padding: 22px; }
+      .kv { grid-template-columns: 1fr; gap: 2px; }
+      .kv .k { padding-top: 12px; }
+      footer.bottom { padding: 28px 20px; flex-direction: column; gap: 12px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="top">
+    <a href="index.html" style="text-decoration: none;"><span class="brand">MASOVIC</span></a>
+    <a class="back" href="index.html">← Zurück</a>
+  </nav>
+
+  <main>
+    <div class="eyebrow">Rechtliches · TMG</div>
+    <h1>Impressum.</h1>
+
+    <h2>Angaben gemäß § 5 TMG</h2>
+    <div class="card">
+      <div class="label">Anbieter</div>
+      <div class="name">Nuh Masovic</div>
+      <div class="lines">
+        Grünstr. 5<br />
+        45326 Essen<br />
+        Deutschland
+      </div>
+      <div class="kv">
+        <div class="k">Telefon</div>
+        <div class="v"><a href="tel:+4916290916891">+49 162 9091689</a></div>
+        <div class="k">E-Mail</div>
+        <div class="v"><a href="mailto:noah@quietstatus.org">noah@quietstatus.org</a></div>
+      </div>
+    </div>
+
+    <h2>Handelsregister</h2>
+    <p class="note">Handelsregistereintragung beantragt, Nummer wird nachgereicht.</p>
+
+    <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+    <p>Nuh Masovic<br />Grünstr. 5<br />45326 Essen</p>
+  </main>
+
+  <footer class="bottom">
+    <span>© MMXXVI · Masovic</span>
+    <a href="index.html">← Zurück zur Startseite</a>
+  </footer>
+
+</body>
+</html>
