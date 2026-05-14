@@ -141,7 +141,7 @@ window.I18N = {
           title: 'Where to reach you',
           fields: [
             { k: 'email', label: 'Email', placeholder: 'you@brand.com' },
-            { k: 'consent', label: 'Consent', kind: 'checkbox', text: 'I agree that Nuh Masovic may process my data to handle my request and contact me regarding it. I am aware that my data may be processed via Google Sheets, Calendly, and email.' },
+            { k: 'consent', label: 'Consent', kind: 'checkbox', text: 'I agree that my data may be processed to handle my request and to contact me in this regard. I am aware that my data may be processed via Google Sheets, Calendly, and email.' },
           ],
         },
       ],
@@ -289,7 +289,7 @@ window.I18N = {
           title: 'Wo wir Sie erreichen',
           fields: [
             { k: 'email', label: 'E-Mail', placeholder: 'sie@marke.com' },
-            { k: 'consent', label: 'Einverständnis', kind: 'checkbox', text: 'Ich bin damit einverstanden, dass Nuh Masovic meine Angaben zur Bearbeitung meiner Anfrage verarbeitet und mich dazu kontaktieren darf. Mir ist bewusst, dass meine Angaben u. a. über Google Sheets, Calendly und E-Mail verarbeitet werden können.' },
+            { k: 'consent', label: 'Einverständnis', kind: 'checkbox', text: 'Ich stimme zu, dass meine Daten zur Bearbeitung meiner Anfrage und zur Kontaktaufnahme in diesem Zusammenhang verarbeitet werden dürfen. Mir ist bewusst, dass meine Daten über Google Sheets, Calendly und E-Mail verarbeitet werden können.' },
           ],
         },
       ],
