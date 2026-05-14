@@ -6,19 +6,19 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "density": "spacious",
   "showGrain": true,
   "lang": "en"
-}/*EDITMODE-END*/;
+} /*EDITMODE-END*/;
 
 const PALETTES = {
   emerald: { bg: '#122620', fg: '#F4EBD0', muted: '#9CA89E', line: 'rgba(244,235,208,0.14)', accent: '#5E503F', deep: '#0c1a16' },
   midnight: { bg: '#1A1A2E', fg: '#F4EBD0', muted: '#a0a0b8', line: 'rgba(244,235,208,0.14)', accent: '#4B0000', deep: '#0f0f20' },
   obsidian: { bg: '#0a0a0a', fg: '#F4EBD0', muted: '#9c9890', line: 'rgba(244,235,208,0.14)', accent: '#8B7355', deep: '#000000' },
-  cream:    { bg: '#F4EBD0', fg: '#122620', muted: '#5E503F', line: 'rgba(18,38,32,0.14)', accent: '#4B0000', deep: '#e9dfbe' },
+  cream: { bg: '#F4EBD0', fg: '#122620', muted: '#5E503F', line: 'rgba(18,38,32,0.14)', accent: '#4B0000', deep: '#e9dfbe' }
 };
 
 const FONT_PAIRS = {
-  'serif-sans':  { display: '"Cormorant Garamond", "Cormorant", serif', body: '"Inter Tight", "Inter", system-ui, sans-serif', displayWeight: 500 },
-  'all-serif':   { display: '"Cormorant Garamond", serif', body: '"EB Garamond", Georgia, serif', displayWeight: 500 },
-  'sans-only':   { display: '"Instrument Sans", "Inter Tight", system-ui, sans-serif', body: '"Inter Tight", system-ui, sans-serif', displayWeight: 500 },
+  'serif-sans': { display: '"Cormorant Garamond", "Cormorant", serif', body: '"Inter Tight", "Inter", system-ui, sans-serif', displayWeight: 500 },
+  'all-serif': { display: '"Cormorant Garamond", serif', body: '"EB Garamond", Georgia, serif', displayWeight: 500 },
+  'sans-only': { display: '"Instrument Sans", "Inter Tight", system-ui, sans-serif', body: '"Inter Tight", system-ui, sans-serif', displayWeight: 500 }
 };
 
 function applyTheme(t) {
@@ -75,12 +75,12 @@ function Reveal({ children, delay = 0, as: Tag = 'div', className = '', style = 
         ...style,
         opacity: shown ? 1 : 0,
         transform: shown ? 'translateY(0)' : 'translateY(18px)',
-        transition: 'opacity 900ms cubic-bezier(.2,.6,.2,1), transform 900ms cubic-bezier(.2,.6,.2,1)',
-      }}
-    >
+        transition: 'opacity 900ms cubic-bezier(.2,.6,.2,1), transform 900ms cubic-bezier(.2,.6,.2,1)'
+      }}>
+      
       {children}
-    </Tag>
-  );
+    </Tag>);
+
 }
 
 // ────────────────────────────────────────────────────────────
@@ -88,21 +88,21 @@ function LangToggle() {
   const { lang, setLang } = React.useContext(LangCtx);
   return (
     <div data-lang-toggle style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', border: '1px solid var(--line)', padding: 2 }}>
-      {['en', 'de'].map((code) => (
-        <button
-          key={code}
-          onClick={() => setLang(code)}
-          style={{
-            background: lang === code ? 'var(--fg)' : 'transparent',
-            color: lang === code ? 'var(--bg)' : 'var(--fg)',
-            border: 'none', padding: '6px 10px', cursor: 'pointer', fontFamily: 'inherit',
-            fontSize: 'inherit', letterSpacing: 'inherit', textTransform: 'inherit',
-            transition: 'all 200ms ease',
-          }}
-        >{code.toUpperCase()}</button>
-      ))}
-    </div>
-  );
+      {['en', 'de'].map((code) =>
+      <button
+        key={code}
+        onClick={() => setLang(code)}
+        style={{
+          background: lang === code ? 'var(--fg)' : 'transparent',
+          color: lang === code ? 'var(--bg)' : 'var(--fg)',
+          border: 'none', padding: '6px 10px', cursor: 'pointer', fontFamily: 'inherit',
+          fontSize: 'inherit', letterSpacing: 'inherit', textTransform: 'inherit',
+          transition: 'all 200ms ease'
+        }}>
+        {code.toUpperCase()}</button>
+      )}
+    </div>);
+
 }
 
 function Nav({ onApply }) {
@@ -124,12 +124,10 @@ function Nav({ onApply }) {
       borderBottom: scrolled ? '1px solid var(--line)' : '1px solid transparent',
       transition: 'background 400ms ease, backdrop-filter 400ms ease, border-color 400ms ease, padding 400ms ease',
       maxWidth: '100vw',
-      boxSizing: 'border-box',
+      boxSizing: 'border-box'
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <div style={{ width: 28, height: 28, border: '1px solid var(--fg)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 16 }}>M</div>
         <span style={{ fontFamily: 'var(--font-display)', fontSize: 20, letterSpacing: '0.04em', fontWeight: 'var(--display-weight)' }}>MASOVIC</span>
-        <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--muted)', marginLeft: 4, paddingLeft: 12, borderLeft: '1px solid var(--line)' }}>Quiet Status</span>
       </div>
       <div data-nav-right style={{ display: 'flex', alignItems: 'center', gap: 28, fontFamily: 'var(--font-body)', fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
         <span data-nav-links style={{ display: 'contents' }}>
@@ -141,25 +139,25 @@ function Nav({ onApply }) {
         <LangToggle />
         <button data-nav-apply onClick={onApply} style={{
           fontFamily: 'inherit', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
-          background: 'var(--fg)', color: 'var(--bg)', border: 'none', padding: '12px 22px', cursor: 'pointer',
+          background: 'var(--fg)', color: 'var(--bg)', border: 'none', padding: '12px 22px', cursor: 'pointer'
         }}>{t.nav.apply}</button>
       </div>
-    </nav>
-  );
+    </nav>);
+
 }
 
 // ────────────────────────────────────────────────────────────
 function Hero({ onApply }) {
   const t = useT();
   return (
-    <section data-hero style={{ minHeight: 'max(100vh, 880px)', position: 'relative', display: 'flex', flexDirection: 'column', padding: '120px 40px 80px', overflow: 'hidden' }}>
+    <section data-hero style={{ position: 'relative', display: 'flex', flexDirection: 'column', padding: '72px 40px 80px', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 120% 60% at 50% 110%, color-mix(in oklab, var(--accent) 35%, transparent), transparent 60%)', pointerEvents: 'none' }} />
       <div data-hero-eyebrows style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--muted)', flexWrap: 'wrap', gap: 12 }}>
         <span>{t.hero.eyebrow1}</span>
         <span>{t.hero.eyebrow2}</span>
       </div>
 
-      <div style={{ flex: 1, minHeight: 40 }} />
+      <div style={{ height: 48 }} />
 
       <Reveal>
         <h1 style={{
@@ -169,7 +167,7 @@ function Hero({ onApply }) {
           lineHeight: 0.94,
           letterSpacing: '-0.02em',
           margin: 0,
-          textWrap: 'balance',
+          textWrap: 'balance'
         }}>
           {t.hero.h1a}<br />
           {t.hero.h1b} <span style={{ fontStyle: 'italic', color: 'var(--accent)', fontWeight: 400 }}>{t.hero.h1italic}</span><br />
@@ -188,7 +186,7 @@ function Hero({ onApply }) {
             <button onClick={onApply} style={{
               fontFamily: 'var(--font-body)', fontSize: 12, letterSpacing: '0.24em', textTransform: 'uppercase',
               background: 'transparent', color: 'var(--fg)', border: '1px solid var(--fg)',
-              padding: '20px 36px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 14,
+              padding: '20px 36px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 14
             }}>
               {t.hero.cta}
               <span style={{ width: 22, height: 1, background: 'var(--fg)', display: 'inline-block' }} />
@@ -204,8 +202,8 @@ function Hero({ onApply }) {
         <span style={{ width: 1, height: 36, background: 'var(--line)', display: 'inline-block' }} />
         {t.hero.scroll}
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 // ────────────────────────────────────────────────────────────
@@ -215,8 +213,8 @@ function SectionHeader({ index, label }) {
       <span style={{ color: 'var(--accent)' }}>{index}</span>
       <span style={{ flex: '0 0 60px', height: 1, background: 'var(--line)' }} />
       <span>{label}</span>
-    </div>
-  );
+    </div>);
+
 }
 
 function WhoWhat() {
@@ -241,18 +239,18 @@ function WhoWhat() {
               {t.who.body}
             </p>
             <div data-grid="who-cards" style={{ marginTop: 80, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
-              {t.who.cards.map((c) => (
-                <div key={c.k} style={{ borderTop: '1px solid var(--line)', paddingTop: 18 }}>
+              {t.who.cards.map((c) =>
+              <div key={c.k} style={{ borderTop: '1px solid var(--line)', paddingTop: 18 }}>
                   <div style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 22, marginBottom: 6 }}>{c.k}</div>
                   <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)' }}>{c.v}</div>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </Reveal>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 function WhatWeDo() {
@@ -267,26 +265,26 @@ function WhatWeDo() {
           </h2>
         </Reveal>
         <div>
-          {t.what.items.map((it, i) => (
-            <Reveal key={it.n} delay={i * 80}>
+          {t.what.items.map((it, i) =>
+          <Reveal key={it.n} delay={i * 80}>
               <div data-row="what-item" style={{
-                display: 'grid', gridTemplateColumns: '120px 1fr 2fr', gap: 60,
-                padding: '36px 0', borderTop: '1px solid var(--line)',
-                alignItems: 'baseline',
-              }}>
+              display: 'grid', gridTemplateColumns: '120px 1fr 2fr', gap: 60,
+              padding: '36px 0', borderTop: '1px solid var(--line)',
+              alignItems: 'baseline'
+            }}>
                 <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, letterSpacing: '0.24em', color: 'var(--muted)' }}>{it.n}</div>
                 <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 'var(--display-weight)', fontSize: 32, lineHeight: 1.1, margin: 0, letterSpacing: '-0.01em' }}>{it.t}</h3>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, lineHeight: 1.65, color: 'var(--muted)', margin: 0, maxWidth: 520 }}>{it.d}</p>
               </div>
             </Reveal>
-          ))}
+          )}
           <div style={{ borderTop: '1px solid var(--line)', paddingTop: 36, marginTop: 24, fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 24, color: 'var(--fg)', textAlign: 'right' }}>
             {t.what.footer}
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 // ────────────────────────────────────────────────────────────
@@ -309,13 +307,13 @@ function Approach() {
           </p>
         </Reveal>
         <div style={{ display: 'grid', gap: 0 }}>
-          {t.approach.tenets.map((tn, i) => (
-            <Reveal key={i} delay={i * 100}>
+          {t.approach.tenets.map((tn, i) =>
+          <Reveal key={i} delay={i * 100}>
               <div data-row="tenet" style={{
-                display: 'grid', gridTemplateColumns: '60px 1fr 1fr', gap: 40,
-                padding: '40px 0', borderTop: '1px solid var(--line)',
-                alignItems: 'center',
-              }}>
+              display: 'grid', gridTemplateColumns: '60px 1fr 1fr', gap: 40,
+              padding: '40px 0', borderTop: '1px solid var(--line)',
+              alignItems: 'center'
+            }}>
                 <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.3em', color: 'var(--accent)' }}>{String(i + 1).padStart(2, '0')}</div>
                 <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 3.4vw, 52px)', lineHeight: 1, fontWeight: 'var(--display-weight)', letterSpacing: '-0.01em' }}>
                   {tn.l}
@@ -325,7 +323,7 @@ function Approach() {
                 </div>
               </div>
             </Reveal>
-          ))}
+          )}
           <div style={{ borderTop: '1px solid var(--line)' }} />
         </div>
         <Reveal delay={400}>
@@ -334,8 +332,8 @@ function Approach() {
           </p>
         </Reveal>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 // ────────────────────────────────────────────────────────────
@@ -357,23 +355,23 @@ function Proof() {
         </Reveal>
         <Reveal delay={200}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 1, background: 'var(--line)', border: '1px solid var(--line)' }}>
-            {t.proof.rows.map((m) => (
-              <div key={m.label} data-row="proof-row" style={{ background: 'var(--deep)', padding: '32px 28px', display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: 20 }}>
+            {t.proof.rows.map((m) =>
+            <div key={m.label} data-row="proof-row" style={{ background: 'var(--deep)', padding: '32px 28px', display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: 20 }}>
                 <div>
                   <div style={{ fontFamily: 'var(--font-display)', fontSize: 26, lineHeight: 1.15, fontWeight: 'var(--display-weight)', marginBottom: 6 }}>{m.label}</div>
                   <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--muted)' }}>{m.meta}</div>
                 </div>
                 <div data-proof-perf style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 36, color: 'var(--accent)' }}>{m.perf}</div>
               </div>
-            ))}
-            <div style={{ background: 'var(--deep)', padding: '20px 28px', fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--muted)', textAlign: 'right' }}>
+            )}
+            <div style={{ background: 'var(--deep)', padding: '20px 28px', fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--muted)', textAlign: 'right', opacity: "1" }}>
               {t.proof.footnote}
             </div>
           </div>
         </Reveal>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 // ────────────────────────────────────────────────────────────
@@ -389,16 +387,16 @@ function Process() {
           </h2>
         </Reveal>
         <div data-grid="process" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32 }}>
-          {t.process.steps.map((s, i) => (
-            <Reveal key={s.n} delay={i * 120}>
+          {t.process.steps.map((s, i) =>
+          <Reveal key={s.n} delay={i * 120}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 24, height: '100%' }}>
                 <div style={{
-                  aspectRatio: '4/5',
-                  border: '1px solid var(--line)',
-                  background: `repeating-linear-gradient(135deg, transparent 0 14px, color-mix(in oklab, var(--fg) 4%, transparent) 14px 15px)`,
-                  position: 'relative',
-                  display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 24,
-                }}>
+                aspectRatio: '4/5',
+                border: '1px solid var(--line)',
+                background: `repeating-linear-gradient(135deg, transparent 0 14px, color-mix(in oklab, var(--fg) 4%, transparent) 14px 15px)`,
+                position: 'relative',
+                display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 24
+              }}>
                   <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.3em', color: 'var(--accent)' }}>{t.process.stepLabel} {s.n}</div>
                   <div style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 'clamp(60px, 6vw, 96px)', lineHeight: 0.9, color: 'var(--fg)', alignSelf: 'flex-end' }}>
                     .{s.n}
@@ -408,11 +406,11 @@ function Process() {
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, lineHeight: 1.6, color: 'var(--muted)', margin: 0 }}>{s.d}</p>
               </div>
             </Reveal>
-          ))}
+          )}
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 // ────────────────────────────────────────────────────────────
@@ -435,25 +433,25 @@ function Network() {
           </div>
         </Reveal>
         <div data-grid="verticals" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
-          {t.network.verticals.map((v, i) => (
-            <Reveal key={v.t} delay={i * 100}>
+          {t.network.verticals.map((v, i) =>
+          <Reveal key={v.t} delay={i * 100}>
               <div data-network-card style={{
-                border: '1px solid var(--line)', padding: 28, height: '100%',
-                display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: 360,
-                background: 'color-mix(in oklab, var(--fg) 2%, transparent)',
-              }}>
+              border: '1px solid var(--line)', padding: 28, height: '100%',
+              display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: 360,
+              background: 'color-mix(in oklab, var(--fg) 2%, transparent)'
+            }}>
                 <div style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--muted)' }}>{t.network.verticalLabel} · {String(i + 1).padStart(2, '0')}</div>
                 <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 'var(--display-weight)', fontSize: 30, lineHeight: 1.1, margin: '120px 0 24px', letterSpacing: '-0.01em' }}>
                   {v.t}
                 </h3>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                  {v.tags.map((tg) => (
-                    <span key={tg} style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--fg)', border: '1px solid var(--line)', padding: '6px 10px' }}>{tg}</span>
-                  ))}
+                  {v.tags.map((tg) =>
+                <span key={tg} style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--fg)', border: '1px solid var(--line)', padding: '6px 10px' }}>{tg}</span>
+                )}
                 </div>
               </div>
             </Reveal>
-          ))}
+          )}
         </div>
         <Reveal delay={400}>
           <div data-vertical-meta style={{ marginTop: 60, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--line)', paddingTop: 24, fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--muted)' }}>
@@ -462,8 +460,8 @@ function Network() {
           </div>
         </Reveal>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 // ────────────────────────────────────────────────────────────
@@ -491,8 +489,8 @@ function About() {
           </div>
         </Reveal>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 // ────────────────────────────────────────────────────────────
@@ -521,7 +519,7 @@ function FinalCTA({ onApply }) {
           <button onClick={onApply} style={{
             fontFamily: 'var(--font-body)', fontSize: 13, letterSpacing: '0.28em', textTransform: 'uppercase',
             background: 'var(--fg)', color: 'var(--bg)', border: 'none',
-            padding: '24px 48px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 16,
+            padding: '24px 48px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 16
           }}>
             {t.cta.btn}
             <span style={{ width: 28, height: 1, background: 'var(--bg)', display: 'inline-block' }} />
@@ -531,8 +529,8 @@ function FinalCTA({ onApply }) {
           </div>
         </Reveal>
       </div>
-    </section>
-  );
+    </section>);
+
 }
 
 // ────────────────────────────────────────────────────────────
@@ -545,36 +543,79 @@ function Footer() {
           <div style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 'var(--display-weight)', letterSpacing: '0.02em' }}>MASOVIC</div>
           <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--muted)', marginTop: 6 }}>{t.footer.tag}</div>
         </div>
-        {t.footer.cols.map((c) => (
-          <div key={c.h}>
+        {t.footer.cols.map((c) =>
+        <div key={c.h}>
             <div style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: 14 }}>{c.h}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {c.l.map((x) => <span key={x} style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--fg)' }}>{x}</span>)}
             </div>
           </div>
-        ))}
+        )}
       </div>
-      <div style={{ maxWidth: 1400, margin: '60px auto 0', borderTop: '1px solid var(--line)', paddingTop: 20, display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--muted)' }}>
+      <div style={{ maxWidth: 1400, margin: '60px auto 0', borderTop: '1px solid var(--line)', paddingTop: 20, display: 'flex', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap', fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--muted)' }}>
         <span>{t.footer.copy}</span>
+        <span style={{ display: 'flex', gap: 24 }}>
+          <a href="impressum.html" style={{ color: 'var(--muted)', textDecoration: 'none' }}>Impressum</a>
+          <a href="datenschutz.html" style={{ color: 'var(--muted)', textDecoration: 'none' }}>Datenschutz</a>
+        </span>
         <span>{t.footer.slogan}</span>
       </div>
-    </footer>
-  );
+    </footer>);
+
 }
 
 // ────────────────────────────────────────────────────────────
 function ApplyModal({ open, onClose }) {
   const t = useT();
   const [step, setStep] = useState(0);
-  const [data, setData] = useState({ brand: '', category: '', budget: '', goal: '', email: '' });
-  const close = () => { onClose(); setTimeout(() => setStep(0), 300); };
+  const [data, setData] = useState({ brand: '', category: '', notes: '', email: '', consent: false });
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState('');
+  const close = () => {onClose();setTimeout(() => { setStep(0); setSendError(''); }, 300);};
   if (!open) return null;
   const update = (k, v) => setData((d) => ({ ...d, [k]: v }));
   const steps = t.modal.steps;
   const cur = steps[step];
-  const valid = cur.fields.every((f) => data[f.k] && data[f.k].trim().length > 0);
+  const valid = cur.fields.every((f) => {
+    if (f.kind === 'checkbox') return data[f.k] === true;
+    const v = data[f.k];
+    return v && String(v).trim().length > 0;
+  });
   const isLast = step === steps.length - 1;
   const submitted = step === steps.length;
+
+  const handleSubmit = async () => {
+    if (!valid || sending) return;
+    setSending(true);
+    setSendError('');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: 'aabe5b03-71a3-4174-83d7-46fd23728b8d',
+          subject: `New partnership inquiry — ${data.brand || 'Masovic'}`,
+          from_name: data.brand || 'Masovic site',
+          reply_to: data.email,
+          brand: data.brand,
+          category: data.category,
+          email: data.email,
+          notes: data.notes,
+          consent: data.consent ? 'Yes' : 'No',
+          botcheck: ''
+        })
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || json.success === false) {
+        throw new Error(json.message || 'Submission failed');
+      }
+      setStep((s) => s + 1);
+    } catch (err) {
+      setSendError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <div onClick={close} style={{
@@ -582,25 +623,25 @@ function ApplyModal({ open, onClose }) {
       background: 'color-mix(in oklab, var(--deep) 80%, transparent)',
       backdropFilter: 'blur(8px)',
       display: 'grid', placeItems: 'center', padding: 24,
-      animation: 'fadeIn 280ms ease',
+      animation: 'fadeIn 280ms ease'
     }}>
       <div data-modal onClick={(e) => e.stopPropagation()} style={{
         background: 'var(--bg)', color: 'var(--fg)',
         width: 'min(640px, 100%)', padding: '48px 48px 40px',
         border: '1px solid var(--line)',
-        position: 'relative',
+        position: 'relative'
       }}>
         <button onClick={close} style={{
           position: 'absolute', top: 18, right: 18, background: 'transparent', border: 'none', color: 'var(--fg)',
-          fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase', cursor: 'pointer',
+          fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase', cursor: 'pointer'
         }}>{t.modal.close}</button>
 
-        {!submitted ? (
-          <div>
+        {!submitted ?
+        <div>
             <div style={{ display: 'flex', gap: 6, marginBottom: 32 }}>
-              {steps.map((_, i) => (
-                <span key={i} style={{ flex: 1, height: 2, background: i <= step ? 'var(--accent)' : 'var(--line)', transition: 'background 300ms' }} />
-              ))}
+              {steps.map((_, i) =>
+            <span key={i} style={{ flex: 1, height: 2, background: i <= step ? 'var(--accent)' : 'var(--line)', transition: 'background 300ms' }} />
+            )}
             </div>
             <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--muted)' }}>
               {t.modal.step(step + 1, steps.length)}
@@ -608,36 +649,54 @@ function ApplyModal({ open, onClose }) {
             <h3 data-modal-title style={{ fontFamily: 'var(--font-display)', fontWeight: 'var(--display-weight)', fontSize: 44, letterSpacing: '-0.01em', margin: '8px 0 36px' }}>{cur.title}</h3>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
-              {cur.fields.map((f) => (
-                <label key={f.k} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {cur.fields.map((f) =>
+            f.kind === 'checkbox' ?
+            <label key={f.k} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, cursor: 'pointer', marginTop: 4 }}>
+                  <input
+                type="checkbox"
+                checked={data[f.k] === true}
+                onChange={(e) => update(f.k, e.target.checked)}
+                style={{
+                  appearance: 'none', WebkitAppearance: 'none',
+                  width: 18, height: 18, marginTop: 2, flex: '0 0 18px',
+                  border: '1px solid var(--fg)', background: data[f.k] ? 'var(--accent)' : 'transparent',
+                  cursor: 'pointer'
+                }} />
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, lineHeight: 1.55, color: 'var(--muted)' }}>{f.text}</span>
+                </label> :
+            <label key={f.k} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--muted)' }}>{f.label}</span>
-                  {f.kind === 'select' ? (
-                    <select value={data[f.k]} onChange={(e) => update(f.k, e.target.value)} style={inputStyle}>
+                  {f.kind === 'select' ?
+              <select value={data[f.k]} onChange={(e) => update(f.k, e.target.value)} style={inputStyle}>
                       <option value="">{f.placeholder}</option>
                       {f.options.map((o) => <option key={o} value={o}>{o}</option>)}
-                    </select>
-                  ) : f.kind === 'textarea' ? (
-                    <textarea value={data[f.k]} onChange={(e) => update(f.k, e.target.value)} placeholder={f.placeholder} rows={3} style={{ ...inputStyle, resize: 'vertical', minHeight: 80 }} />
-                  ) : (
-                    <input value={data[f.k]} onChange={(e) => update(f.k, e.target.value)} placeholder={f.placeholder} style={inputStyle} />
-                  )}
+                    </select> :
+              f.kind === 'textarea' ?
+              <textarea value={data[f.k]} onChange={(e) => update(f.k, e.target.value)} placeholder={f.placeholder} rows={3} style={{ ...inputStyle, resize: 'vertical', minHeight: 80 }} /> :
+
+              <input value={data[f.k]} onChange={(e) => update(f.k, e.target.value)} placeholder={f.placeholder} style={inputStyle} />
+              }
                 </label>
-              ))}
+            )}
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 36 }}>
               <button onClick={() => setStep((s) => Math.max(0, s - 1))} disabled={step === 0} style={{ ...ghostBtn, opacity: step === 0 ? 0.3 : 1 }}>{t.modal.back}</button>
               <button
-                onClick={() => valid && setStep((s) => s + 1)}
-                disabled={!valid}
-                style={{ ...primaryBtn, opacity: valid ? 1 : 0.4, cursor: valid ? 'pointer' : 'not-allowed' }}
-              >
-                {isLast ? t.modal.submit : t.modal.cont}
+              onClick={() => {
+                if (!valid || sending) return;
+                if (isLast) { handleSubmit(); } else { setStep((s) => s + 1); }
+              }}
+              disabled={!valid || sending}
+              style={{ ...primaryBtn, opacity: (valid && !sending) ? 1 : 0.4, cursor: (valid && !sending) ? 'pointer' : 'not-allowed' }}>
+              
+                {isLast ? (sending ? '…' : t.modal.submit) : t.modal.cont}
               </button>
             </div>
-          </div>
-        ) : (
-          <div style={{ textAlign: 'center', padding: '20px 0' }}>
+            {sendError && <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: '#c84e4e', marginTop: 14, textAlign: 'right' }}>{sendError}</div>}
+          </div> :
+
+        <div style={{ textAlign: 'center', padding: '20px 0' }}>
             <div style={{ fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 16 }}>{t.modal.received}</div>
             <h3 data-modal-thanks style={{ fontFamily: 'var(--font-display)', fontWeight: 'var(--display-weight)', fontSize: 48, letterSpacing: '-0.01em', margin: '0 0 16px' }}>{t.modal.thanksA} <span style={{ fontStyle: 'italic' }}>{data.brand}</span>{t.modal.thanksB}</h3>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, lineHeight: 1.65, color: 'var(--muted)', maxWidth: 420, margin: '0 auto 32px' }}>
@@ -645,58 +704,58 @@ function ApplyModal({ open, onClose }) {
             </p>
             <button onClick={close} style={primaryBtn}>{t.modal.doneBtn}</button>
           </div>
-        )}
+        }
       </div>
-    </div>
-  );
+    </div>);
+
 }
 
 const inputStyle = {
   fontFamily: 'var(--font-body)', fontSize: 15, color: 'var(--fg)',
   background: 'transparent', border: 'none', borderBottom: '1px solid var(--line)',
-  padding: '10px 0', outline: 'none', appearance: 'none',
+  padding: '10px 0', outline: 'none', appearance: 'none'
 };
 const primaryBtn = {
   fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase',
-  background: 'var(--fg)', color: 'var(--bg)', border: 'none', padding: '14px 28px', cursor: 'pointer',
+  background: 'var(--fg)', color: 'var(--bg)', border: 'none', padding: '14px 28px', cursor: 'pointer'
 };
 const ghostBtn = {
   fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase',
-  background: 'transparent', color: 'var(--fg)', border: '1px solid var(--line)', padding: '14px 22px', cursor: 'pointer',
+  background: 'transparent', color: 'var(--fg)', border: '1px solid var(--line)', padding: '14px 22px', cursor: 'pointer'
 };
 
 // ────────────────────────────────────────────────────────────
 function Tweaks() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-  useEffect(() => { applyTheme(t); }, [t]);
+  useEffect(() => {applyTheme(t);}, [t]);
   return (
     <TweaksPanel title="Tweaks">
       <TweakSection title="Palette">
         <TweakRadio value={t.palette} onChange={(v) => setTweak('palette', v)} options={[
-          { value: 'emerald', label: 'Emerald' },
-          { value: 'midnight', label: 'Midnight' },
-          { value: 'obsidian', label: 'Obsidian' },
-          { value: 'cream', label: 'Cream' },
-        ]} />
+        { value: 'emerald', label: 'Emerald' },
+        { value: 'midnight', label: 'Midnight' },
+        { value: 'obsidian', label: 'Obsidian' },
+        { value: 'cream', label: 'Cream' }]
+        } />
       </TweakSection>
       <TweakSection title="Typography">
         <TweakRadio value={t.fontPair} onChange={(v) => setTweak('fontPair', v)} options={[
-          { value: 'serif-sans', label: 'Serif + Sans' },
-          { value: 'all-serif', label: 'All Serif' },
-          { value: 'sans-only', label: 'Sans Only' },
-        ]} />
+        { value: 'serif-sans', label: 'Serif + Sans' },
+        { value: 'all-serif', label: 'All Serif' },
+        { value: 'sans-only', label: 'Sans Only' }]
+        } />
       </TweakSection>
       <TweakSection title="Density">
         <TweakRadio value={t.density} onChange={(v) => setTweak('density', v)} options={[
-          { value: 'compact', label: 'Compact' },
-          { value: 'spacious', label: 'Spacious' },
-        ]} />
+        { value: 'compact', label: 'Compact' },
+        { value: 'spacious', label: 'Spacious' }]
+        } />
       </TweakSection>
       <TweakSection title="Texture">
         <TweakToggle label="Film grain overlay" value={t.showGrain} onChange={(v) => setTweak('showGrain', v)} />
       </TweakSection>
-    </TweaksPanel>
-  );
+    </TweaksPanel>);
+
 }
 
 // ────────────────────────────────────────────────────────────
@@ -704,10 +763,10 @@ function App() {
   const [modal, setModal] = useState(false);
   const [lang, setLangState] = useState(getInitialLang);
 
-  useEffect(() => { applyTheme(TWEAK_DEFAULTS); }, []);
+  useEffect(() => {applyTheme(TWEAK_DEFAULTS);}, []);
   useEffect(() => {
     document.documentElement.lang = lang;
-    try { localStorage.setItem('masovic_lang', lang); } catch (e) {}
+    try {localStorage.setItem('masovic_lang', lang);} catch (e) {}
   }, [lang]);
 
   const setLang = (l) => setLangState(l);
@@ -730,8 +789,8 @@ function App() {
         <ApplyModal open={modal} onClose={() => setModal(false)} />
         <Tweaks />
       </div>
-    </LangCtx.Provider>
-  );
+    </LangCtx.Provider>);
+
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
