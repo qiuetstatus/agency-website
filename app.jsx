@@ -127,7 +127,7 @@ function Nav({ onApply }) {
       boxSizing: 'border-box'
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <span style={{ fontFamily: 'var(--font-display)', fontSize: 20, letterSpacing: '0.04em', fontWeight: 'var(--display-weight)' }}>MASOVIC</span>
+        <span style={{ fontFamily: 'var(--font-display)', fontSize: 26, letterSpacing: '0.04em', fontWeight: 'var(--display-weight)' }}>Quiet Status</span>
       </div>
       <div data-nav-right style={{ display: 'flex', alignItems: 'center', gap: 28, fontFamily: 'var(--font-body)', fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
         <span data-nav-links style={{ display: 'contents' }}>
